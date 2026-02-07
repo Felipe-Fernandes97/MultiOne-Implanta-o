@@ -1,0 +1,196 @@
+"use client";
+
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { HelpCircle, Search, ChevronDown, Tag } from "lucide-react";
+
+const categorias = ["Todas", "Configuração", "Importação", "Relatórios", "Integrações", "Geral"];
+
+const faqItems = [
+  {
+    id: 1,
+    categoria: "Configuração",
+    pergunta: "Como que faz a conexão do Qr code, qual é a opção",
+    resposta:
+      "Acesse o módulo de Gestão > Conexões > Vai aparecer um + no canto superior do lado direito > Clicando nele vai aparecer as opções de conexão disponíveis > Escolha a do WhatsApp > Em seguida de um nome a conexão e clique em Adicionar > Após isso vai aparecer a opção de gerar o Qr Code > Escaneie com o app MultiOne e pronto!",
+  }, 
+  {
+    id: 2,
+    categoria: "Configuração",
+    pergunta: "Como fazer Upload de arquivos?",
+    resposta:
+      "Acesse o módulo de Gestão > Lista de Arquivos > Clique no + no canto superior do lado direito > Selecione o nome da lista de arquivos > Detelhas se quiser > Vai aparecer um campo 'Mensagem para enviar com o arquivo' se quiser > Clicando no clipes do lado direito da mensagem, adicone o arquivo desejado > Clique em Salvar e pronto! O arquivo já estará disponível para ser enviado nos atendimentos.",
+  },
+  {
+    id: 3,
+    categoria: "Configuração",
+    pergunta: "Como que altera a senha, o nome, etc",
+    resposta:
+      "Acesse o módulo de Gestão > Usuários > Clique no usuário que deseja editar > Clique no lapiz do lado do nome do usuário> Altere as informações desejadas > Clique em Salvar e pronto! As informações do usuário já estarão atualizadas.",
+  },
+  {
+    id: 4,
+    categoria: "Lentidão",
+    pergunta: "Minha plataforma apresenta lentidão",
+    resposta:
+      "Verifique sua conexão de internet e certifique-se de que está utilizando um navegador atualizado (recomendamos Google Chrome, Opera e Brave). Limpar o cache do navegador pelo inspecionar também pode ajudar a melhorar o desempenho. Se o problema persistir, entre em contato com o suporte técnico através do módulo Suporte > Novo Chamado.",
+  },
+  {
+    id: 5,
+    categoria: "Relatórios",
+    pergunta: "Como gerar um relatório de progresso da implantação?",
+    resposta:
+      "Acesse Dashboard > Relatórios > Implantação. Selecione o período desejado e os filtros necessários (cliente, módulo, status). O relatório pode ser exportado em PDF ou Excel.",
+  },
+  {
+    id: 6,
+    categoria: "Integrações",
+    pergunta: "",
+    resposta:
+      "A plataforma oferece APIs REST para os principais módulos: Clientes, Usuários, Dados e Relatórios. A documentação completa da API está disponível no módulo Integrações > Documentação API.",
+  },
+  {
+    id: 7,
+    categoria: "Integrações",
+    pergunta: "Como configurar webhooks para notificações?",
+    resposta:
+      "Em Integrações > Webhooks, clique em 'Novo Webhook'. Defina a URL de callback, os eventos que deseja monitorar (ex: novo cliente, importação concluída) e o formato de payload (JSON). Teste a conexão antes de ativar.",
+  },
+  {
+    id: 8,
+    categoria: "Geral",
+    pergunta: "Qual o navegador recomendado para usar a plataforma?",
+    resposta:
+      "Recomendamos Google Chrome (versão mais recente) ou Microsoft Edge. A plataforma também funciona no Firefox e Safari, mas pode haver diferenças visuais menores.",
+  },
+  {
+    id: 9,
+    categoria: "Geral",
+    pergunta: "Como solicitar suporte técnico durante a implantação?",
+    resposta:
+      "Utilize o módulo de Suporte > Novo Chamado descrevendo o problema detalhadamente. Inclua prints de tela e logs quando possível. O tempo de resposta é de até 4 horas úteis para chamados de prioridade normal.",
+  },
+  {
+    id: 10,
+    categoria: "Relatórios",
+    pergunta: "É possível agendar envio automático de relatórios?",
+    resposta:
+      "Sim! Em Relatórios > Agendamentos, configure a frequência (diário, semanal, mensal), selecione o tipo de relatório e adicione os e-mails dos destinatários. O sistema enviará automaticamente nos horários configurados.",
+  },
+];
+
+export default function DuvidasPage() {
+  const [categoriaAtiva, setCategoriaAtiva] = useState("Todas");
+  const [busca, setBusca] = useState("");
+  const [aberto, setAberto] = useState<number | null>(null);
+
+  const faqFiltrado = faqItems.filter((item) => {
+    const matchCategoria =
+      categoriaAtiva === "Todas" || item.categoria === categoriaAtiva;
+    const matchBusca =
+      item.pergunta.toLowerCase().includes(busca.toLowerCase()) ||
+      item.resposta.toLowerCase().includes(busca.toLowerCase());
+    return matchCategoria && matchBusca;
+  });
+
+  return (
+        <div className="min-h-screen py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+
+      {/* Header */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="text-center mb-12"
+      >
+        <h1 className="text-4xl text-white md:text-5xl font-bold mb-4">
+          <span className="gradient-text">Dúvidas Frequentes</span>
+        </h1>
+        <p className="text-white text-lg max-w-2xl mx-auto">
+          Encontre respostas para as perguntas mais comuns sobre a plataforma.
+        </p>
+      </motion.div>
+
+      {/* Search */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.1 }}
+        className="mb-8"
+      >
+        <div className="relative">
+          <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted" />
+          <input
+            type="text"
+            placeholder="Buscar dúvida..."
+            value={busca}
+            onChange={(e) => setBusca(e.target.value)}
+            className="w-full pl-12 pr-4 py-4 rounded-xl bg-card border border-card-border text-foreground placeholder:text-muted focus:outline-none transition-colors text-lg"
+          />
+        </div>
+      </motion.div>
+
+      {/* Categorias */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.15 }}
+        className="flex items-center gap-2 flex-wrap mb-8"
+      >
+        <Tag className="w-4 h-4 text-muted" />
+        {categorias.map((cat) => (
+          <button
+            key={cat}
+            onClick={() => setCategoriaAtiva(cat)}
+            className={`px-4 py-2 rounded-lg text-sm transition-all ${
+              categoriaAtiva === cat
+                ? "bg-primary text-white shadow-md"
+                : "bg-card border border-card-border text-muted hover:text-foreground hover:border-primary/30"
+            }`}
+            style={
+              categoriaAtiva === cat
+                ? { boxShadow: "0 2px 10px rgba(29, 78, 216, 0.3)" }
+                : {}
+            }
+          >
+            {cat}
+          </button>
+        ))}
+      </motion.div>
+
+      {/* FAQ List */}
+            
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {faqFiltrado.map((item, index) => (
+          <motion.div
+            key={item.id}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: index * 0.03 }}
+          >
+            <div className="card p-5 h-full">
+              <span className="text-xs px-2.5 py-1 rounded-md bg-primary/15 text-primary-light font-medium">
+                {item.categoria}
+              </span>
+              <h3 className="font-medium text-foreground mt-3 mb-3">
+                {item.pergunta}
+              </h3>
+              <div className="border-l-2 border-primary/30 pl-4">
+                <p className="text-muted text-sm leading-relaxed">
+                  {item.resposta}
+                </p>
+              </div>
+            </div>
+          </motion.div>
+        ))}
+      </div>
+
+
+      {faqFiltrado.length === 0 && (
+        <div className="text-center py-16">
+          <HelpCircle className="w-12 h-12 text-muted/30 mx-auto mb-4" />
+          <p className="text-muted">Nenhuma dúvida encontrada.</p>
+        </div>
+      )}
+    </div>
+  );
+}
