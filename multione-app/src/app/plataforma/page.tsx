@@ -2,6 +2,9 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { ParticleCard, GlobalSpotlight } from "@/components/MagicBento";
+import { useRef } from "react";
+
 import {
   MessageSquare,
   MessagesSquare,
@@ -40,7 +43,6 @@ import {
   Star,
   LifeBuoy,
   Rocket,
- ChevronDown,
   X,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
@@ -207,40 +209,54 @@ const itemVariant = {
 };
 
 export default function PlataformaPage() {
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
+   const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const gridRef = useRef<HTMLDivElement>(null);
 
   return (
     <div className="min-h-screen py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
       {/* Header */}
+       <GlobalSpotlight
+        gridRef={gridRef}
+        enabled={true}
+        spotlightRadius={400}
+        glowColor="29, 78, 216"
+      />
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="text-center mb-16"
-      >
-        <h1 className="text-4xl md:text-5xl font-bold mb-4">
-          <span className="gradient-text">A Plataforma</span>
-        </h1>
-        <p className="text-muted text-lg max-w-2xl mx-auto">
-          Conheça todos os módulos e funcionalidades disponíveis na MultiOne.
-        </p>
-      </motion.div>
-
-      {/* Módulos Grid */}
-      <motion.div
+        ref={gridRef}
         variants={container}
         initial="hidden"
         whileInView="show"
         viewport={{ once: true }}
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+        className="bento-section grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+      >
+        <h1 className="text-4xl text-white md:text-5xl font-bold mb-4">
+            <span className="text-foreground/120">A Plataforma</span>
+        </h1>
+        <p className="text-foreground/80 text-lg max-w-2xl mx-auto">
+          Conheça todos os módulos e funcionalidades disponíveis na MultiOne.
+        </p>
+      </motion.div>
+
+           <motion.div
+        variants={container}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true }}
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
       >
         {modulos.map((modulo, index) => (
           <motion.div
             key={modulo.titulo}
             variants={itemVariant}
-            className="relative"
           >
-            <div
-              className="card p-6 h-full cursor-pointer hover:border-primary/30 transition-all duration-300"
+            <ParticleCard
+              className="bento-card card p-8 h-full cursor-pointer hover:border-primary/30 transition-all duration-300 rounded-xl"
+              style={{ backgroundColor: "#0a1628" }}
+              particleCount={12}
+              glowColor="29, 78, 216"
+              enableTilt={false}
+              enableMagnetism={false}
+              clickEffect
               onClick={() => setOpenIndex(index)}
             >
               <div className="flex items-center justify-between mb-2">
@@ -253,17 +269,18 @@ export default function PlataformaPage() {
                   </span>
                 )}
               </div>
-              <p className="text-muted text-sm mb-3">{modulo.descricao}</p>
+              <p className="text-muted text-sm mb-5">{modulo.descricao}</p>
               <div
                 className={`h-0.5 w-full rounded-full bg-gradient-to-r ${modulo.gradient} opacity-40`}
               />
-              <p className="text-xs text-muted/50 text-center mt-4">
+              <p className="text-xs text-muted/50 text-center mt-6">
                 Clique para ver detalhes
               </p>
-            </div>
+            </ParticleCard>
           </motion.div>
         ))}
       </motion.div>
+
 
       {/* Modal com fundo borrado */}
       <AnimatePresence>
@@ -280,7 +297,7 @@ export default function PlataformaPage() {
 
             {/* Card do modal */}
             <motion.div
-               initial={{ opacity: 0, y: 10 }}
+              initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 10 }}
               transition={{ duration: 0.15, ease: "easeOut" }}

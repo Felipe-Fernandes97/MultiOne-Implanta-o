@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/ui/Navbar";
-import ParticlesBackground from "@/components/ParticlesBackground";
+import Plasma from "@/components/Plasma";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,7 +30,16 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground`}
       >
-        <ParticlesBackground />
+        <div className="fixed inset-0 z-0">
+          <Plasma
+            color="#1d4ed8"
+            speed={0.6}
+            direction="forward"
+            scale={1.1}
+            opacity={0.8}
+            mouseInteractive={true}
+          />
+        </div>
         <Navbar />
         <main className="relative z-10 min-h-screen pt-16">{children}</main>
       </body>

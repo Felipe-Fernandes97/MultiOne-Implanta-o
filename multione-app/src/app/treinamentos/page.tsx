@@ -96,9 +96,9 @@ export default function TreinamentosPage() {
         className="text-center mb-12"
       >
         <h1 className="text-4xl md:text-5xl font-bold mb-4">
-          <span className="gradient-text">Treinamentos</span>
+          <span className="text-foreground/120">Treinamentos</span>
         </h1>
-        <p className="text-muted text-lg max-w-2xl mx-auto">
+        <p className="text-foreground/80 text-lg max-w-2xl mx-auto">
           Assista aos vídeos de treinamento e domine a plataforma MultiOne.
         </p>
       </motion.div>

@@ -112,9 +112,9 @@ export default function QuestionarioPage() {
         className="text-center mb-12"
       >
         <h1 className="text-4xl md:text-5xl font-bold mb-4">
-          <span className="gradient-text">Questionário</span>
+                <span className="text-foreground/120">Questionário</span>
         </h1>
-        <p className="text-muted text-lg max-w-2xl mx-auto">
+        <p className="text-foreground/80 text-lg max-w-2xl mx-auto">
           Teste seu conhecimento e descubra seu nível como implantador.
         </p>
       </motion.div>

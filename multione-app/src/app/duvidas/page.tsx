@@ -2,9 +2,12 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { HelpCircle, Search, ChevronDown, Tag } from "lucide-react";
+import { X } from "lucide-react";
 
-const categorias = ["Todas", "Configuração", "Importação", "Relatórios", "Integrações", "Geral"];
+import { HelpCircle, Search, ChevronDown, Tag } from "lucide-react";
+import { ParticleCard } from "@/components/MagicBento";
+
+const categorias = ["Todas"]
 
 const faqItems = [
   {
@@ -80,7 +83,7 @@ const faqItems = [
 ];
 
 export default function DuvidasPage() {
-  const [categoriaAtiva, setCategoriaAtiva] = useState("Todas");
+    const [categoriaAtiva, setCategoriaAtiva] = useState("Todas");
   const [busca, setBusca] = useState("");
   const [aberto, setAberto] = useState<number | null>(null);
 
@@ -103,9 +106,9 @@ export default function DuvidasPage() {
         className="text-center mb-12"
       >
         <h1 className="text-4xl text-white md:text-5xl font-bold mb-4">
-          <span className="gradient-text">Dúvidas Frequentes</span>
+            <span className="text-foreground/120">Dúvidas Frequentes</span>
         </h1>
-        <p className="text-white text-lg max-w-2xl mx-auto">
+        <p className="text-foreground/80 text-lg max-w-2xl mx-auto">
           Encontre respostas para as perguntas mais comuns sobre a plataforma.
         </p>
       </motion.div>
@@ -167,23 +170,76 @@ export default function DuvidasPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.03 }}
           >
-            <div className="card p-5 h-full">
+<ParticleCard
+              className="card p-5 h-full rounded-xl cursor-pointer"
+              style={{ backgroundColor: "#0a1628" }}
+              particleCount={12}
+              glowColor="29, 78, 216"
+              enableTilt={false}
+              enableMagnetism={false}
+              clickEffect
+              onClick={() => setAberto(item.id)}
+            >
               <span className="text-xs px-2.5 py-1 rounded-md bg-primary/15 text-primary-light font-medium">
                 {item.categoria}
               </span>
               <h3 className="font-medium text-foreground mt-3 mb-3">
                 {item.pergunta}
               </h3>
-              <div className="border-l-2 border-primary/30 pl-4">
-                <p className="text-muted text-sm leading-relaxed">
-                  {item.resposta}
-                </p>
-              </div>
-            </div>
+              <p className="text-xs text-muted/50 text-center mt-4">
+                Clique para ver resposta
+              </p>
+            </ParticleCard>
+
+
           </motion.div>
         ))}
-      </div>
+        </div>
 
+      {/* Modal com fundo borrado */}
+      <AnimatePresence>
+        {aberto !== null && (() => {
+          const item = faqItems.find(f => f.id === aberto);
+          if (!item) return null;
+          return (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 z-50 flex items-center justify-center p-4"
+              onClick={() => setAberto(null)}
+            >
+              <div className="absolute inset-0 bg-black/60 backdrop-blur-md" />
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 10 }}
+                transition={{ duration: 0.15, ease: "easeOut" }}
+                className="relative w-full max-w-2xl card p-8"
+                onClick={(e) => e.stopPropagation()}
+              >
+                <button
+                  onClick={() => setAberto(null)}
+                  className="absolute top-4 right-4 p-2 rounded-full bg-card border border-card-border hover:bg-primary/20 hover:border-primary/40 transition-colors"
+                >
+                  <X className="w-5 h-5 text-muted" />
+                </button>
+                <span className="text-xs px-2.5 py-1 rounded-md bg-primary/15 text-primary-light font-medium">
+                  {item.categoria}
+                </span>
+                <h2 className="text-xl font-bold text-foreground mt-4 mb-4">
+                  {item.pergunta}
+                </h2>
+                <div className="border-l-2 border-primary/30 pl-4">
+                  <p className="text-muted leading-relaxed">
+                    {item.resposta}
+                  </p>
+                </div>
+              </motion.div>
+            </motion.div>
+          );
+        })()}
+      </AnimatePresence>
 
       {faqFiltrado.length === 0 && (
         <div className="text-center py-16">
