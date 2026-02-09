@@ -547,7 +547,7 @@ const MagicBento: React.FC<BentoProps> = ({
 
       <div className="bento-section relative" ref={gridRef}>
         {React.Children.map(children, (child) => {
-          if (!React.isValidElement(child)) return child;
+          if (!React.isValidElement<{ className?: string; style?: React.CSSProperties; onClick?: () => void; children?: React.ReactNode }>(child)) return child;
 
           const borderGlowClass = enableBorderGlow ? 'bento-card--border-glow' : '';
 
