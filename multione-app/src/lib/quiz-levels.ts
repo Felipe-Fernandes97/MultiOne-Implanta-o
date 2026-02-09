@@ -10,7 +10,7 @@ export const quizQuestions: QuizQuestion[] = [
     id: 1,
     pergunta: "Qual é o primeiro passo para configurar a plataforma MultiOne?",
     opcoes: [
-      "Criar um relatório",
+      "Se apresentar para o cliente, informando o que será feito durante a implantação",
       "Realizar o cadastro inicial do cliente",
       "Configurar integrações",
       "Enviar e-mail de boas-vindas",
@@ -19,10 +19,10 @@ export const quizQuestions: QuizQuestion[] = [
   },
   {
     id: 2,
-    pergunta: "Como funciona o processo de importação de dados na plataforma?",
+    pergunta: "Como funciona o processo de importação de contatos na plataforma?",
     opcoes: [
-      "Apenas manualmente",
-      "Via API REST e importação em lote por CSV",
+      "Manualemnte ou com importação em CSV",
+      "Via integração com CRM",
       "Somente por e-mail",
       "Não é possível importar dados",
     ],
@@ -30,19 +30,19 @@ export const quizQuestions: QuizQuestion[] = [
   },
   {
     id: 3,
-    pergunta: "Qual módulo é responsável pelo gerenciamento de usuários?",
+    pergunta: "Pode ser enviado um arquivo junto com a mensagem rápida?",
     opcoes: [
-      "Módulo Financeiro",
-      "Módulo de Relatórios",
-      "Módulo de Administração",
-      "Módulo de Integrações",
+      "Não, não é possível enviar arquivos",
+      "Sim, é possível enviar arquivos junto com mensagens rápidas",
+      "Depende do tipo de arquivo",
+      "Apenas imagens podem ser enviadas com mensagens rápidas",
     ],
     respostaCorreta: 2,
   },
   {
     id: 4,
     pergunta:
-      "Qual é a melhor prática ao configurar permissões de acesso para um novo implantador?",
+      "Sobre a aba de Inteligencia Artificial, para que serve a opção de Equipes de I.A?",
     opcoes: [
       "Dar acesso total a tudo",
       "Configurar perfis com permissões específicas por função",
@@ -53,23 +53,23 @@ export const quizQuestions: QuizQuestion[] = [
   },
   {
     id: 5,
-    pergunta: "Como agendar treinamentos dentro da plataforma?",
+    pergunta: "Qual o limite de arquivo para enviar dentro da plataforma?",
     opcoes: [
-      "Não é possível agendar",
-      "Pelo módulo de calendário integrado",
-      "Apenas por e-mail externo",
-      "Ligando para o suporte",
+      "2 GB",
+      "5 GB",
+      "2 GB",
+      "17 GB",
     ],
-    respostaCorreta: 1,
+    respostaCorreta: 3,
   },
   {
     id: 6,
-    pergunta: "Qual é o processo correto para gerar relatórios de implantação?",
+    pergunta: "Qual opção o cliente tem que selecionar para adicionar algum atendente dentro do grupo?",
     opcoes: [
-      "Exportar manualmente cada dado",
-      "Acessar o dashboard de relatórios e selecionar os filtros desejados",
-      "Solicitar ao suporte técnico",
-      "Não existe essa funcionalidade",
+      "Adicionar como um participante através da opção de informações.",
+      "Adicionar como um participante através da opção de mensagens rápidas.",
+      "Adicionar como um participante através da opção de contatos.",
+      
     ],
     respostaCorreta: 1,
   },
