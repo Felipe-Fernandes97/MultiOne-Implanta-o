@@ -22,14 +22,14 @@ const faqItems = [
     categoria: "Configuração",
     pergunta: "Como fazer Upload de arquivos?",
     resposta:
-      "Acesse o módulo de Gestão > Lista de Arquivos > Clique no + no canto superior do lado direito > Selecione o nome da lista de arquivos > Detelhas se quiser > Vai aparecer um campo 'Mensagem para enviar com o arquivo' se quiser > Clicando no clipes do lado direito da mensagem, adicone o arquivo desejado > Clique em Salvar e pronto! O arquivo já estará disponível para ser enviado nos atendimentos.",
+      "Acesse o módulo de Gestão > Lista de Arquivos > Clique no + no canto superior do lado direito > Selecione o nome da lista de arquivos > Detalhes se quiser > Vai aparecer um campo 'Mensagem para enviar com o arquivo' se quiser > Clicando no clipes do lado direito da mensagem, adicone o arquivo desejado > Clique em Salvar e pronto! O arquivo já estará disponível para ser enviado nos atendimentos.",
   },
   {
     id: 3,
     categoria: "Configuração",
     pergunta: "Como que altera a senha, o nome, etc",
     resposta:
-      "Acesse o módulo de Gestão > Usuários > Clique no usuário que deseja editar > Clique no lapiz do lado do nome do usuário> Altere as informações desejadas > Clique em Salvar e pronto! As informações do usuário já estarão atualizadas.",
+      "Acesse o módulo de Gestão > Usuários > Clique no lapiz do lado do nome do usuário > Altere as informações desejadas > Clique em Salvar e pronto! As informações do usuário já estarão atualizadas.",
   },
   {
     id: 4,
@@ -43,43 +43,17 @@ const faqItems = [
     categoria: "Relatórios",
     pergunta: "Como gerar um relatório de progresso da implantação?",
     resposta:
-      "Acesse Dashboard > Relatórios > Implantação. Selecione o período desejado e os filtros necessários (cliente, módulo, status). O relatório pode ser exportado em PDF ou Excel.",
+      "Acesse Gestão > Relatórios > Selecione o período desejado e os filtros necessários (cliente, módulo, status). O relatório pode ser exportado em Excel.",
   },
-  {
-    id: 6,
-    categoria: "Integrações",
-    pergunta: "",
-    resposta:
-      "A plataforma oferece APIs REST para os principais módulos: Clientes, Usuários, Dados e Relatórios. A documentação completa da API está disponível no módulo Integrações > Documentação API.",
-  },
-  {
+   
+ {
     id: 7,
-    categoria: "Integrações",
-    pergunta: "Como configurar webhooks para notificações?",
-    resposta:
-      "Em Integrações > Webhooks, clique em 'Novo Webhook'. Defina a URL de callback, os eventos que deseja monitorar (ex: novo cliente, importação concluída) e o formato de payload (JSON). Teste a conexão antes de ativar.",
-  },
-  {
-    id: 8,
     categoria: "Geral",
     pergunta: "Qual o navegador recomendado para usar a plataforma?",
     resposta:
       "Recomendamos Google Chrome (versão mais recente) ou Microsoft Edge. A plataforma também funciona no Firefox e Safari, mas pode haver diferenças visuais menores.",
   },
-  {
-    id: 9,
-    categoria: "Geral",
-    pergunta: "Como solicitar suporte técnico durante a implantação?",
-    resposta:
-      "Utilize o módulo de Suporte > Novo Chamado descrevendo o problema detalhadamente. Inclua prints de tela e logs quando possível. O tempo de resposta é de até 4 horas úteis para chamados de prioridade normal.",
-  },
-  {
-    id: 10,
-    categoria: "Relatórios",
-    pergunta: "É possível agendar envio automático de relatórios?",
-    resposta:
-      "Sim! Em Relatórios > Agendamentos, configure a frequência (diário, semanal, mensal), selecione o tipo de relatório e adicione os e-mails dos destinatários. O sistema enviará automaticamente nos horários configurados.",
-  },
+  
 ];
 
 export default function DuvidasPage() {

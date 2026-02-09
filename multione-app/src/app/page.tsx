@@ -3,10 +3,6 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import {
-  PlayCircle,
-  HelpCircle,
-  Monitor,
-  ClipboardCheck,
   ArrowRight,
   Sparkles,
 } from "lucide-react";
@@ -16,33 +12,25 @@ const sections = [
     title: "Treinamentos",
     description:
       "Acesse os vídeos de treinamento da plataforma e aprenda no seu ritmo.",
-    icon: PlayCircle,
     href: "/treinamentos",
-    gradient: "from-blue-600 to-blue-400",
   },
   {
     title: "Dúvidas Frequentes",
     description:
       "Encontre respostas para as dúvidas mais comuns dos nossos clientes.",
-    icon: HelpCircle,
     href: "/duvidas",
-    gradient: "from-blue-500 to-cyan-500",
   },
   {
     title: "Plataforma",
     description:
       "Informações detalhadas sobre módulos, funcionalidades e recursos.",
-    icon: Monitor,
     href: "/plataforma",
-    gradient: "from-cyan-500 to-sky-500",
   },
   {
     title: "Questionário",
     description:
       "Teste seu conhecimento e descubra seu nível como implantador.",
-    icon: ClipboardCheck,
     href: "/questionario",
-    gradient: "from-indigo-500 to-blue-500",
   },
 ];
 
@@ -118,15 +106,7 @@ export default function Home() {
             <motion.div key={section.title} variants={item}>
               <Link href={section.href} className="block group">
                 <div className="card p-8 h-full">
-                  <div className="flex items-start justify-between mb-6">
-                    <div
-                      className={`inline-flex p-3 rounded-xl bg-gradient-to-r ${section.gradient} shadow-lg`}
-                      style={{
-                        boxShadow: "0 4px 14px rgba(29, 78, 216, 0.3)",
-                      }}
-                    >
-                      <section.icon className="w-6 h-6 text-white" />
-                    </div>
+                  <div className="flex items-start justify-end mb-6">
                     <ArrowRight className="w-5 h-5 text-muted group-hover:text-primary group-hover:translate-x-1 transition-all" />
                   </div>
                   <h3 className="text-xl font-semibold text-foreground mb-3 group-hover:text-white transition-colors">
