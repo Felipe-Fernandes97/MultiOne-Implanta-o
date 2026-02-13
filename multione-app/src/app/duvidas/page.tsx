@@ -40,20 +40,46 @@ const faqItems = [
   },
   {
     id: 5,
-    categoria: "Relatórios",
-    pergunta: "Como gerar um relatório de progresso da implantação?",
+    categoria: "Configuração",
+    pergunta: "Qual a diferença entre Gestor, Supervisor, Relacionamento e Usuário",
     resposta:
-      "Acesse Gestão > Relatórios > Selecione o período desejado e os filtros necessários (cliente, módulo, status). O relatório pode ser exportado em Excel.",
+      "Gestor perfil master da plataforma com todo acesso a atendimentos e configurações, Supervisor se assemelha muito ao gestor, mas não tem acesso as funções de criar usuários, alterar conexões(números), Relacionamento em um nível hierárquico funciona um atendente, mas consegue visualizar todas as mensagens que ocorrem dentro de um departamento e Usuário perfil mais básico, com acesso aos atendimentos que ele iniciou ou recebeu na plataforma.",
   },
-   
- {
+  {
+    id: 6,
+    categoria: "Integrações",
+    pergunta: "Quais as possibilidades de integração a plataforma permite?",
+    resposta:
+      "1- I.A recepcionista, 2- CHATBOT e 3- CHATBOT simples criado na própria plataforma, ele permite mensagens de boas vindas geral, ou por departamento.",
+  },
+  {
     id: 7,
+    categoria: "Integrações",
+    pergunta: " Posso utilizar meu acesso simultâneo em duas maquinas ou maquina e aplicativo?",
+    resposta:
+      "Não, por acesso a plataforma permite um login online por vez.",
+  },
+  {
+    id: 8,
     categoria: "Geral",
     pergunta: "Qual o navegador recomendado para usar a plataforma?",
     resposta:
       "Recomendamos Google Chrome (versão mais recente) ou Microsoft Edge. A plataforma também funciona no Firefox e Safari, mas pode haver diferenças visuais menores.",
   },
-  
+  {
+    id: 9,
+    categoria: "Geral",
+    pergunta: "Como ira funcionar após eu conectar meu Whatsapp a plataforma?",
+    resposta:
+      "Os atendimentos seguirão por 3 etapas: 'Recepção' (Para atendimentos sem departamentos ou que ainda estão interagindo com alguma integração CHATBOT ou I.A), 'Departamento' (Clientes que já selecionaram algumas das opções da Integração e estão aguardando até que um usuário inicie este atendimento) e 'Conversa' (clientes já ativos em processo de atendimento humano).",
+  },
+  {
+    id: 10,
+    categoria: "Relatórios",
+    pergunta: "Posso conectar quantos números na plataforma?",
+    resposta:
+      "Isso depende do plano que foi contratado no processo comercial, mas minimax, apenas 1 conexão, light e os demais permitem mais de uma",
+  },
 ];
 
 export default function DuvidasPage() {

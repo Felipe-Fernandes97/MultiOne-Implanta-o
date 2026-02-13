@@ -9,28 +9,25 @@ import {
 
 const sections = [
   {
-    title: "Treinamentos",
-    description:
-      "Acesse os vídeos de treinamento da plataforma e aprenda no seu ritmo.",
-    href: "/treinamentos",
-  },
-  {
     title: "Dúvidas Frequentes",
     description:
       "Encontre respostas para as dúvidas mais comuns dos nossos clientes.",
     href: "/duvidas",
+    gradient: "from-blue-500 to-cyan-500",
   },
   {
     title: "Plataforma",
     description:
       "Informações detalhadas sobre módulos, funcionalidades e recursos.",
     href: "/plataforma",
+    gradient: "from-cyan-500 to-sky-500",
   },
   {
     title: "Questionário",
     description:
       "Teste seu conhecimento e descubra seu nível como implantador.",
     href: "/questionario",
+    gradient: "from-indigo-500 to-blue-500",
   },
 ];
 
@@ -106,7 +103,7 @@ export default function Home() {
             <motion.div key={section.title} variants={item}>
               <Link href={section.href} className="block group">
                 <div className="card p-8 h-full">
-                  <div className="flex items-start justify-end mb-6">
+                  <div className="flex items-end justify-end mb-6">
                     <ArrowRight className="w-5 h-5 text-muted group-hover:text-primary group-hover:translate-x-1 transition-all" />
                   </div>
                   <h3 className="text-xl font-semibold text-foreground mb-3 group-hover:text-white transition-colors">

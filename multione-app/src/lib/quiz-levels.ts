@@ -8,12 +8,12 @@ export interface QuizQuestion {
 export const quizQuestions: QuizQuestion[] = [
   {
     id: 1,
-    pergunta: "Qual é o primeiro passo para configurar a plataforma MultiOne?",
+    pergunta: "Posso utilizar mais de uma integração na plataforma? (CHATBOT ou I.A)",
     opcoes: [
-      "Se apresentar para o cliente, informando o que será feito durante a implantação",
-      "Realizar o cadastro inicial do cliente",
-      "Configurar integrações",
-      "Enviar e-mail de boas-vindas",
+      "Sim, desde que sejam a mesma integração não ocorrera conflitos, ou seja uma I.A e um CHATBOT não recomendamos.",
+      "não, apenas uma integração pode ser ativa por vez",
+      "depende do plano contratado",
+
     ],
     respostaCorreta: 1,
   },
@@ -21,8 +21,8 @@ export const quizQuestions: QuizQuestion[] = [
     id: 2,
     pergunta: "Como funciona o processo de importação de contatos na plataforma?",
     opcoes: [
-      "Manualemnte ou com importação em CSV",
-      "Via integração com CRM",
+      "você consegue importar manualmente um contato por vez ou importar um arquivo por CSV seguindo modelo apresentado na plataforma",
+      "Via API REST e importação em lote por CSV",
       "Somente por e-mail",
       "Não é possível importar dados",
     ],
@@ -30,46 +30,46 @@ export const quizQuestions: QuizQuestion[] = [
   },
   {
     id: 3,
-    pergunta: "Pode ser enviado um arquivo junto com a mensagem rápida?",
+    pergunta: "Os usuários de atendentes coneseguem desconectar a conexão do Whatsapp da plataforma?",
     opcoes: [
-      "Não, não é possível enviar arquivos",
-      "Sim, é possível enviar arquivos junto com mensagens rápidas",
-      "Depende do tipo de arquivo",
-      "Apenas imagens podem ser enviadas com mensagens rápidas",
+      "Sim, eles tem acesso a essa função",
+      "Não, apenas usuários com perfil de gestor ou supervisor tem acesso a essa função",
+      "depende da permissão de acesso configurada para cada usuário",
+
     ],
     respostaCorreta: 2,
   },
   {
     id: 4,
     pergunta:
-      "Sobre a aba de Inteligencia Artificial, para que serve a opção de Equipes de I.A?",
+      "Meu histórico antigo vai subir a plataforma?",
     opcoes: [
-      "Dar acesso total a tudo",
-      "Configurar perfis com permissões específicas por função",
-      "Não configurar permissões",
-      "Usar a senha do administrador",
+      "Não, como é um espelhamento, o histórico será gerado a partir da conexão em diante.",
+      "Sim, todo o histórico de mensagens será importado automaticamente.",
+      "Depende se o cliente tem mais de 1000 mensagens, nesse caso apenas as últimas 1000 serão importadas.",
+
     ],
     respostaCorreta: 1,
   },
   {
     id: 5,
-    pergunta: "Qual o limite de arquivo para enviar dentro da plataforma?",
+    pergunta: "Quais as orientações básicas de conexão?",
     opcoes: [
-      "2 GB",
-      "5 GB",
-      "2 GB",
-      "17 GB",
+      "Manter a conexão somente com a plataforma e o celular em uma rede estável, Não utilizar o WhatsApp no celular após a conexão para não perder os históricos e caso utilize WhatsApp Business e tenha mensagens de saudação desabilitar para não conflitar com a plataforma.",
+      "Manter a conexão somente com a plataforma e o celular em uma rede estável, Utilizar o WhatsApp no celular normalmente, Não é necessário desabilitar mensagens de saudação do WhatsApp Business.",
+      "Manter a conexão somente com a plataforma e o celular em uma rede estável, Utilizar o WhatsApp no celular normalmente, Desabilitar mensagens de saudação do WhatsApp Business para evitar conflitos com as mensagens automáticas da plataforma.",
+
     ],
-    respostaCorreta: 3,
+    respostaCorreta: 1,
   },
   {
     id: 6,
-    pergunta: "Qual opção o cliente tem que selecionar para adicionar algum atendente dentro do grupo?",
+    pergunta: "Gestor e Supervisor conseguem realizar atendimentos na plataforma?",
     opcoes: [
-      "Adicionar como um participante através da opção de informações.",
-      "Adicionar como um participante através da opção de mensagens rápidas.",
-      "Adicionar como um participante através da opção de contatos.",
-      
+      "sim, ambos os perfis tem acesso a função de atendimento",
+      "Não, apenas o perfil de usuário tem acesso a função de atendimento",
+      "Depende da permissão de acesso configurada para cada usuário",
+
     ],
     respostaCorreta: 1,
   },
@@ -79,19 +79,19 @@ export const quizQuestions: QuizQuestion[] = [
     opcoes: [
       "Ignorar o erro",
       "Reiniciar todo o processo",
-      "Documentar o erro, verificar logs e escalar se necessário",
+      "Documentar o erro, informando ao cliente que o erro foi registrado e será analisado pelo suporte técnico ou desenvolvimento",
       "Pedir para o cliente resolver sozinho",
     ],
-    respostaCorreta: 2,
+    respostaCorreta: 3,
   },
   {
     id: 8,
-    pergunta: "Como validar se a implantação foi concluída com sucesso?",
+    pergunta: "As mensagem rapidas criaças no perfil do usuário ficam disponíveis para outros usuários?",
     opcoes: [
-      "Perguntar ao cliente se está tudo bem",
-      "Executar o checklist de validação e verificar todos os módulos configurados",
-      "Apenas verificar se o login funciona",
-      "Não é necessário validar",
+      "Não, as mensagens rápidas criadas no perfil do usuário são exclusivas para aquele usuário e não ficam disponíveis para outros usuários na plataforma.",
+      "Sim, as mensagens rápidas criadas no perfil do usuário ficam disponíveis para todos os usuários na plataforma.",
+      "Apenas o gestor tem acesso as mensagens rápidas criadas por outros usuários",
+
     ],
     respostaCorreta: 1,
   },
