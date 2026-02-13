@@ -12,7 +12,6 @@ import {
   Mail,
 } from "lucide-react";
 import { quizQuestions, calcularNivel } from "@/lib/quiz-levels";
-import { getSupabase, type QuizResponse } from "@/lib/supabase";
 
 type Etapa = "dados" | "quiz" | "resultado";
 
@@ -23,7 +22,6 @@ export default function QuestionarioPage() {
   const [perguntaAtual, setPerguntaAtual] = useState(0);
   const [respostas, setRespostas] = useState<Record<number, number>>({});
   const [pontuacao, setPontuacao] = useState(0);
-  const [salvando, setSalvando] = useState(false);
 
   const progresso = ((perguntaAtual + 1) / quizQuestions.length) * 100;
 
@@ -52,7 +50,7 @@ export default function QuestionarioPage() {
     }
   }
 
-  async function finalizarQuiz() {
+  function finalizarQuiz() {
     let acertos = 0;
     quizQuestions.forEach((q, index) => {
       if (respostas[index] === q.respostaCorreta) {
@@ -61,34 +59,7 @@ export default function QuestionarioPage() {
     });
 
     setPontuacao(acertos);
-    const resultado = calcularNivel(acertos);
-
-    setSalvando(true);
-    try {
-      const respostasFormatadas: Record<string, string> = {};
-      quizQuestions.forEach((q, index) => {
-        respostasFormatadas[`pergunta_${q.id}`] =
-          q.opcoes[respostas[index]] || "Não respondida";
-      });
-
-      const payload: QuizResponse = {
-        nome_implantador: nome,
-        email: email,
-        respostas: respostasFormatadas,
-        pontuacao: acertos,
-        nivel: resultado.nivel,
-      };
-
-      const supabase = getSupabase();
-      if (supabase) {
-        await supabase.from("quiz_responses").insert(payload);
-      }
-    } catch (error) {
-      console.error("Erro ao salvar resultado:", error);
-    } finally {
-      setSalvando(false);
-      setEtapa("resultado");
-    }
+    setEtapa("resultado");
   }
 
   function reiniciar() {
@@ -321,10 +292,6 @@ export default function QuestionarioPage() {
                 <RotateCcw className="w-4 h-4" /> Fazer Novamente
               </button>
             </div>
-
-            {salvando && (
-              <p className="text-sm text-muted mt-4">Salvando resultado...</p>
-            )}
           </motion.div>
         )}
       </AnimatePresence>
