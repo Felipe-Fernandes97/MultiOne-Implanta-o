@@ -72,13 +72,7 @@ export default function Home() {
             transition={{ delay: 0.6 }}
             className="flex flex-col sm:flex-row items-center justify-center gap-4"
           >
-            <Link
-              href="/treinamentos"
-              className="px-8 py-3 rounded-xl border border-card-border text-foreground/80  hover:bg-card/50 hover:border-primary/30 transition-all flex items-center gap-2"
-            >
-              Começar Treinamento
-              <ArrowRight className="w-4 h-4" />
-            </Link>
+           
             <Link
               href="/questionario"
               className="px-8 py-3 rounded-xl border border-card-border text-foreground/80 hover:bg-card/50 hover:border-primary/30 transition-all flex items-center gap-2"
