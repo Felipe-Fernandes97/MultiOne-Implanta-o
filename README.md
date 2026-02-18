@@ -1,107 +1,81 @@
-Stack Tecnológica
+MultiOne Implantação
+Portal de capacitação para implantadores da plataforma MultiOne. Centraliza conteúdos sobre o sistema, dúvidas frequentes e um questionário para validar o nível de conhecimento.
 
-Framework: Next.js 14 + TypeScript (App Router)
-Estilização: Tailwind CSS + Framer Motion
-Efeitos Visuais: React Bits (reactbits.dev) - Particles background, text animations
-Backend/DB: Supabase (PostgreSQL + Storage para vídeos)
+Tecnologias
+
+
+Framework: Next.js 16 (App Router) + TypeScript
+
+
+Estilização: Tailwind CSS 4
+
+
+Animações: Framer Motion 12 e GSAP 3
+
+
+Efeitos visuais: WebGL com OGL (plasma animado)
+
+
 Ícones: Lucide React
 
-Estrutura de Páginas
-1. Landing Page (/)
 
-Hero section com partículas animadas (React Bits Particles background)
-Texto animado com efeitos do React Bits (ex: SplitText, GradientText)
-Cards de navegação para as seções principais com hover animations (Framer Motion)
-Tema escuro com gradientes sutis
 
-2. Treinamentos (/treinamentos)
+Estrutura do Projeto
+multione-app/
+├── src/
+│   ├── app/
+│   │   ├── layout.tsx          # Layout global
+│   │   ├── page.tsx            # Landing page
+│   │   ├── duvidas/            # Página de FAQ
+│   │   ├── plataforma/         # Informações da plataforma
+│   │   └── questionario/       # Quiz de avaliação
+│   ├── components/
+│   │   ├── ui/
+│   │   │   ├── Navbar.tsx
+│   │   │   └── Footer.tsx
+│   │   ├── Plasma.tsx          # Fundo WebGL animado
+│   │   ├── Lightning.tsx
+│   │   ├── MagicBento.tsx
+│   │   └── ParticlesBackground.tsx
+│   └── lib/
+│       └── quiz-levels.ts      # Lógica de cálculo de nível
+├── public/
+├── package.json
+├── next.config.ts
+└── tsconfig.json
 
-Grid de vídeos organizados por categorias/módulos
-Player de vídeo com upload próprio (Supabase Storage)
-Progresso de visualização por vídeo
-Thumbnails com efeito hover
 
-3. FAQ / Dúvidas (/duvidas)
+Páginas
+Landing Page (/)
+Hero com fundo em plasma animado via WebGL.
+Cards de navegação direcionando para as principais seções.
+Dúvidas (/duvidas)
+10 perguntas frequentes sobre a plataforma.
+Busca por palavra-chave.
+Filtro por categoria.
+Modal com resposta completa ao selecionar uma pergunta.
+Plataforma (/plataforma)
+Cinco módulos principais: Atendimento, Gestão, Inteligência Artificial, Serviços e Suporte.
+Cards expansíveis com subtemas e funcionalidades detalhadas de cada módulo.
+Questionário (/questionario)
+8 perguntas de múltipla escolha.
+Interface em etapas com barra de progresso.
+Resultado classificado em quatro níveis: Iniciante, Intermediário, Avançado e Expert.
 
-Accordion com as dúvidas mais frequentes dos clientes
-Categorias de dúvidas
-Busca por palavras-chave
-Animações de abertura/fechamento com Framer Motion
+Como rodar
+cd multione-app
 
-4. Informações da Plataforma (/plataforma)
+# Instalar dependências
+npm install
 
-Seções com features/funcionalidades da plataforma
-Cards informativos com ícones e animações
-Timeline ou steps de uso
+# Iniciar ambiente de desenvolvimento
+npm run dev
+# Acesse: http://localhost:3000
 
-5. Questionário (/questionario)
+# Gerar build de produção
+npm run build
+npm start
 
-Quiz de 8 perguntas sobre a plataforma
-Interface step-by-step (uma pergunta por vez)
-Barra de progresso animada
-Resultado final com nível do implantador (ex: Iniciante, Intermediário, Avançado, Expert)
-Salvar respostas + resultado no Supabase
 
-Design System (Tema Escuro)
-
-Background: #0a0a0a / #111111
-Cards: #1a1a2e com bordas sutis #16213e
-Primária: Cor da marca MultiOne (azul/roxo gradiente)
-Texto: #e0e0e0 / #ffffff
-Acentos: Gradientes neon sutis
-
-Banco de Dados (Supabase)
-Tabelas:
-
-quiz_responses - id, nome_implantador, email, respostas (jsonb), pontuacao, nivel, created_at
-faq_items - id, categoria, pergunta, resposta, ordem, created_at
-videos - id, titulo, descricao, categoria, url_video, thumbnail_url, ordem, created_at
-
-Estrutura de Arquivos
-src/
-├── app/
-│   ├── layout.tsx          (Layout global com tema escuro + particles)
-│   ├── page.tsx            (Landing page)
-│   ├── treinamentos/
-│   │   └── page.tsx
-│   ├── duvidas/
-│   │   └── page.tsx
-│   ├── plataforma/
-│   │   └── page.tsx
-│   └── questionario/
-│       └── page.tsx
-├── components/
-│   ├── ui/                 (Componentes reutilizáveis)
-│   │   ├── Navbar.tsx
-│   │   ├── Footer.tsx
-│   │   ├── Card.tsx
-│   │   └── Button.tsx
-│   ├── ParticlesBackground.tsx
-│   ├── VideoPlayer.tsx
-│   ├── FaqAccordion.tsx
-│   ├── QuizForm.tsx
-│   └── QuizResult.tsx
-├── lib/
-│   ├── supabase.ts         (Client Supabase)
-│   └── quiz-levels.ts      (Lógica de cálculo de nível)
-└── styles/
-    └── globals.css          (Tailwind base + custom dark theme)
-Passos de Implementação
-
-Setup do projeto - Criar Next.js app com TypeScript, instalar dependências (Tailwind, Framer Motion, React Bits, Supabase client, Lucide)
-Tema escuro global - Configurar Tailwind dark theme, globals.css, layout base
-Navbar + Footer - Navegação responsiva com links para todas as seções
-Landing Page - Hero com particles + cards de navegação
-Página de Treinamentos - Grid de vídeos com player
-Página de Dúvidas - FAQ accordion com busca
-Página Plataforma - Informações com cards animados
-Questionário - Quiz step-by-step com cálculo de nível
-Integração Supabase - Configurar client, criar tipos, conectar questionário
-Efeitos React Bits - Adicionar particles, text animations, e outros efeitos visuais
-
-Verificação
-
-Rodar npm run dev e testar todas as páginas
-Verificar responsividade mobile
-Testar questionário completo (envio + resultado)
-Validar efeitos visuais e animações
+Design System
+TokenValorBackground#0a0a0a / #111111Cards#0a1628Borda cards#0f2847Primária#1d4ed8 (azul)Secundária#0ea5e9 (ciano)Texto#e2e8f0 / #ffffffMuted#64748b
